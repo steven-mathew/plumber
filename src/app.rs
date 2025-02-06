@@ -53,8 +53,15 @@ impl App {
 
         if self.last_update.elapsed() >= update_rate {
             if let Some(command) = command {
-                self.output = Some(App::collect(command)?);
                 self.last_update = Instant::now();
+                match App::collect(command) {
+                    Ok(output) => self.output = Some(output),
+                    Err(err) => {
+                        self.output = Some(err.to_string());
+                        return Err(err);
+                    }
+                }
+
                 return Ok(true);
             }
         }

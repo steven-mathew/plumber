@@ -12,6 +12,7 @@ pub fn handle_enter(app: &mut App, ui: &mut UI) -> Result<bool> {
             return Ok(true);
         }
         Err(_) => {
+            ui.update(app);
             ui.command_failed();
             return Ok(false);
         }
