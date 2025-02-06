@@ -1,3 +1,5 @@
 pub mod app;
-// pub mod event;
-// pub mod handler;
+pub mod handler;
+pub mod message;
+pub mod tui;
+pub mod ui;
